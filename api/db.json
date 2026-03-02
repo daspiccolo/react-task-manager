@@ -11,29 +11,21 @@
       "name": "test",
       "email": "test1@test.com",
       "password": "111111"
+    },
+    {
+      "id": "d4b3",
+      "name": "tera",
+      "email": "tera@test.com",
+      "password": "123456"
     }
   ],
   "tasks": [
     {
-      "id": "66b9",
-      "title": "test",
-      "status": "todo",
-      "userId": "1",
-      "createdAt": "2026-03-02T14:21:07.427Z"
-    },
-    {
-      "id": "bdcf",
-      "title": "tett",
+      "id": "1b22",
+      "title": "yredyudsy",
       "status": "done",
       "userId": "1",
-      "createdAt": "2026-03-02T14:21:15.298Z"
-    },
-    {
-      "id": "6185",
-      "title": "tehs",
-      "status": "done",
-      "userId": "1",
-      "createdAt": "2026-03-02T14:21:19.930Z"
+      "createdAt": "2026-03-02T17:22:56.645Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

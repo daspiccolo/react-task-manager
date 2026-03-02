@@ -3,8 +3,17 @@ import { api } from "../../services/api";
 
 const saved = localStorage.getItem("user");
 
+const safeParse = (value) => {
+  if (!value || value === "undefined" || value === "null") return null;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+};
+
 const initialState = {
-  user: saved ? JSON.parse(saved) : null,
+  user: safeParse(localStorage.getItem("user")),
   status: "idle",
   error: null,
 };
@@ -24,14 +33,39 @@ export const login = createAsyncThunk(
     return user;
   }
 );
-export const register = createAsyncThunk("auth/register", async ({ name, email, password }) => {
-  // check if email already exists
- const existing = await api.get("/users");
-const exists = existing.data.some(
-  (u) => String(u.email).trim().toLowerCase() === String(email).trim().toLowerCase()
+export const register = createAsyncThunk(
+  "auth/register",
+  async ({ name, email, password }) => {
+    const cleanName = String(name || "").trim();
+    const cleanEmail = String(email || "").trim().toLowerCase();
+    const cleanPassword = String(password || "");
+
+    if (!cleanName || !cleanEmail || !cleanPassword) {
+      throw new Error("Please fill in all fields");
+    }
+    if (cleanPassword.length < 6) {
+      throw new Error("Password must be at least 6 characters");
+    }
+
+    const all = await api.get("/users");
+
+    const exists = all.data.some(
+      (u) => String(u.email).trim().toLowerCase() === cleanEmail
+    );
+
+    if (exists) {
+      throw new Error("Email already exists");
+    }
+
+    const res = await api.post("/users", {
+      name: cleanName,
+      email: cleanEmail,
+      password: cleanPassword,
+    });
+
+    return res.data;
+  }
 );
-if (exists) throw new Error("Email already registered");
-});
 
 const authSlice = createSlice({
   name: "auth",
