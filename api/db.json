@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Test User",
+      "email": "test@test.com",
+      "password": "123456"
+    },
+    {
+      "id": "3fea",
+      "name": "test",
+      "email": "test1@test.com",
+      "password": "111111"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "66b9",
+      "title": "test",
+      "status": "todo",
+      "userId": "1",
+      "createdAt": "2026-03-02T14:21:07.427Z"
+    },
+    {
+      "id": "bdcf",
+      "title": "tett",
+      "status": "done",
+      "userId": "1",
+      "createdAt": "2026-03-02T14:21:15.298Z"
+    },
+    {
+      "id": "6185",
+      "title": "tehs",
+      "status": "done",
+      "userId": "1",
+      "createdAt": "2026-03-02T14:21:19.930Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
