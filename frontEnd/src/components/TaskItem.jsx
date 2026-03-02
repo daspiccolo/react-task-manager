@@ -13,7 +13,7 @@ export default function TaskItem({ task, onToggle, onDelete }) {
         >
           ✓
         </button>
-
+//button de delete
         <button
           onClick={onDelete}
           className="px-3 py-1 rounded-lg bg-red-100 hover:bg-red-200"
